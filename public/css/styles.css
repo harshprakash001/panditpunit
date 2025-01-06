@@ -1,0 +1,180 @@
+/* Reset styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(120deg, #ffcc70, #ff7eb3);
+  color: #333;
+  line-height: 1.6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 10px;
+}
+
+/* Main container */
+.container {
+  background: #ffffff;
+  max-width: 600px;
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Heading */
+h1 {
+  font-size: 1.8rem;
+  text-align: center;
+  color: #444;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* Intro Section */
+.intro {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Pandit Image */
+.pandit-image {
+  width: 100px; /* Adjust the size as needed */
+  height: auto;
+  border-radius: 50%; /* Circular image */
+  margin-right: 15px;
+  border: 2px solid #ff7eb3; /* Optional border */
+}
+
+/* Intro Text */
+.intro-text {
+  text-align: left;
+}
+
+.intro-text h2 {
+  font-size: 1.5rem;
+  color: #ff7eb3;
+  font-weight: bold;
+}
+
+.intro-text h3 {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+/* Form styles */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  font-weight: bold;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+input,
+select {
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.3s ease;
+  background: #f9f9f9;
+}
+
+input:focus,
+select:focus {
+  border-color: #ff7eb3;
+  background: #fff;
+  box-shadow: 0 0 8px rgba(255, 126, 179, 0.3);
+}
+
+/* Button styles */
+button {
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  background-color: #ff7eb3;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+button:hover {
+  background-color: #ff659c;
+  box-shadow: 0 4px 10px rgba(255, 126, 179, 0.4);
+}
+
+/* Output container */
+#panchang-output {
+  margin-top: 20px;
+  padding: 15px;
+  background: #f7f7f7;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  max-height: 300px;
+  overflow-y: auto;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#panchang-output table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+#panchang-output td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  font-size: 0.9rem;
+}
+
+#panchang-output tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+#panchang-output tr:nth-child(odd) {
+  background: #ffffff;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .container {
+      padding: 15px;
+  }
+
+  h1 {
+      font-size: 1.5rem;
+  }
+
+  input,
+  select,
+  button {
+      font-size: 0.9rem;
+  }
