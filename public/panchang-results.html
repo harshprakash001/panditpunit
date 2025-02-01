@@ -1,0 +1,215 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panchang Results</title>
+    <style>
+        /* Global styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        .container {
+            background: #ffffff;
+            color: #333;
+            padding: 20px 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            width: 90%;
+        }
+
+        .decorative-box {
+            background: #2575fc;
+            color: #fff;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .decorative-box h2 {
+            margin: 0 0 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #2575fc;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        td {
+            background-color: #f9f9f9;
+        }
+
+        tr:nth-child(even) td {
+            background-color: #f1f1f1;
+        }
+
+        .back-button {
+            margin-top: 20px;
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #2575fc;
+            text-decoration: none;
+            border-radius: 25px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Nakshatra Link Styles */
+        .nakshatra-link {
+            margin-bottom: 20px;
+            display: inline-block;
+            padding: 12px 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #fff;
+            background-color: #ff9800;
+            text-decoration: none;
+            border-radius: 25px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .nakshatra-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25d366;
+            border-radius: 50%;
+            padding: 15px;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .whatsapp-icon {
+            width: 60px;
+            height: 60px;
+            display: block;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>Panchang Details</h1>
+    <div class="container">
+        
+        <div id="decorative-box" class="decorative-box"></div>
+        <a href="nakshatra-details.html" class="nakshatra-link">✨ 27 Nakshatra Details ✨</a>
+        <div id="panchang-output"></div>
+    </div>
+    <a href="/" class="back-button">← Go Back</a>
+
+    <script>
+        const panchangData = JSON.parse(localStorage.getItem('panchangData'));
+        const boxData = JSON.parse(localStorage.getItem('boxData'));
+
+        function displayBoxDetails(data) {
+            const boxDiv = document.getElementById('decorative-box');
+            boxDiv.innerHTML = ` 
+                <h2>🌟 Important Details</h2>
+                <p><strong>Date:</strong> ${data.date}</p>
+                <p><strong>Day:</strong> ${data.day}</p>
+                <p><strong>Vikram Samvat:</strong> ${data.vikramSamvat}</p>
+                <p><strong>तिथिनक्षत्र:</strong> ${data.tithi}</p>
+                <p><strong>मास:</strong> ${data.mash}</p>
+            `;
+        }
+        
+        function displayPanchang(data) {
+            const outputDiv = document.getElementById('panchang-output');
+            outputDiv.innerHTML = '';
+
+            if (!data) {
+                outputDiv.textContent = 'No data available.';
+                return;
+            }
+
+            const table = document.createElement('table');
+
+            const headerRow = document.createElement('tr');
+            const headerKey = document.createElement('th');
+            headerKey.textContent = 'Detail';
+            const headerValue = document.createElement('th');
+            headerValue.textContent = 'Value';
+            headerRow.appendChild(headerKey);
+            headerRow.appendChild(headerValue);
+            table.appendChild(headerRow);
+
+            Object.entries(data).forEach(([key, value]) => {
+                const row = document.createElement('tr');
+
+                const keyCell = document.createElement('td');
+                keyCell.textContent = key;
+
+                const valueCell = document.createElement('td');
+                valueCell.textContent = value;
+
+                row.appendChild(keyCell);
+                row.appendChild(valueCell);
+                table.appendChild(row);
+            });
+
+            outputDiv.appendChild(table);
+        }
+
+        displayBoxDetails(boxData);
+        displayPanchang(panchangData);
+    </script>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/9838687923" target="_blank" class="whatsapp-float">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-icon">
+    </a>
+</body>
+</html>
