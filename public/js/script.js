@@ -650,6 +650,7 @@
 
 
 
+
 document.getElementById('search-location').addEventListener('click', async function () {
     const location = document.getElementById('location').value;
 
@@ -711,35 +712,26 @@ document.getElementById('panchang-form').addEventListener('submit', async functi
         if (!response.ok) throw new Error('Failed to fetch Panchang data.');
 
         const data = await response.json();
-        displayPanchang(data);
+
+        // Extract important details for the decorative box
+        const boxData = {
+            date,
+            day: new Date(date).toLocaleDateString('en-US', { weekday: 'long' }),
+            vikramSamvat: data['विक्रम सम्वतबृहस्पति सम्वत्सर'],
+            hindiMonth: data['हिन्दी महिना'],
+            tithi: data['तिथिनक्षत्र'],
+            nakshatra: data['नक्षत्र'],
+            mash: data['प्रविष्टे/गते']
+        };
+
+        // Store Panchang data and box data in localStorage
+        localStorage.setItem('panchangData', JSON.stringify(data));
+        localStorage.setItem('boxData', JSON.stringify(boxData));
+
+        // Redirect to a new page to display the Panchang data
+        window.open('/panchang-results.html', '_blank');
     } catch (error) {
         console.error('Error fetching Panchang:', error);
         document.getElementById('panchang-output').innerHTML = 'Error fetching Panchang data. Please try again.';
     }
 });
-
-function displayPanchang(data) {
-    const outputDiv = document.getElementById('panchang-output');
-    outputDiv.innerHTML = '';
-
-    const table = document.createElement('table');
-    table.classList.add('styled-table');
-
-    Object.entries(data).forEach(([key, value]) => {
-        const row = document.createElement('tr');
-
-        const keyCell = document.createElement('td');
-        keyCell.textContent = key;
-        keyCell.classList.add('key-cell');
-
-        const valueCell = document.createElement('td');
-        valueCell.textContent = value;
-        valueCell.classList.add('value-cell');
-
-        row.appendChild(keyCell);
-        row.appendChild(valueCell);
-        table.appendChild(row);
-    });
-
-    outputDiv.appendChild(table);
-}
