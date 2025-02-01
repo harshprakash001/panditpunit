@@ -204,40 +204,53 @@
 </head>
 <body>
   <div class="container">
-    <header>
+    <header class="header">
       <h1>📜 Hindi Panchang</h1>
       <div class="intro">
         <img src="pandit-ji.jpg" alt="Pandit Ji" class="pandit-image">
         <div class="intro-text">
-          <h2>आचार्य पंडित पुनीत त्रिपाठी जी द्वारा प्रमाणित fपंचांग</h2>
+          <h2>आचार्य पंडित पुनीत त्रिपाठी जी द्वारा प्रमाणित पंचांग</h2>
           <h3>Certified Panchang by Acharya Pandit Puneet Tripathi Ji</h3>
         </div>
       </div>
     </header>
-    <form id="panchang-form">
+
+    <form id="panchang-form" class="form">
       <div class="form-group">
-        <label for="location">Search Location:</label>
-        <input type="text" id="location" name="location" placeholder="Enter city name" required>
-        <button type="button" id="search-location">Search</button>
+        <label for="location">🔍 Search Location:</label>
+        <div class="input-wrapper">
+          <input type="text" id="location" name="location" placeholder="Enter city name" required>
+          <button type="button" id="search-location" class="btn">Search</button>
+        </div>
       </div>
       <div id="location-results"></div>
+      
       <div class="form-group">
-        <label for="date">Select Date:</label>
+        <label for="date">📅 Select Date:</label>
         <input type="date" id="date" name="date" required>
       </div>
+      
       <div class="form-group">
-        <label for="language">Language:</label>
-        <select id="language" name="language">
+        <label for="language">🌐 Language:</label>
+        <select id="language" name="language" class="select">
           <option value="hi">Hindi</option>
           <option value="en">English</option>
         </select>
       </div>
+      
       <input type="hidden" id="geonameId" name="geonameId">
       <input type="hidden" id="timezone" name="timezone">
-      <button type="submit">Fetch Panchang</button>
+      <button type="submit" class="btn submit-btn">Fetch Panchang</button>
     </form>
-    <div id="panchang-output"></div>
+
+    <div id="panchang-output" class="output"></div>
   </div>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/9838687923" target="_blank" class="whatsapp-float">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-icon">
+  </a>
+
   <script src="js/script.js"></script>
 </body>
 </html>
