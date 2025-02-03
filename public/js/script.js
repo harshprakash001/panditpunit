@@ -1,4 +1,3 @@
-
 document.getElementById('search-location').addEventListener('click', async function () {
     const location = document.getElementById('location').value;
 
@@ -64,7 +63,7 @@ document.getElementById('panchang-form').addEventListener('submit', async functi
         // Extract important details for the decorative box
         const boxData = {
             date,
-            day: new Date(date).toLocaleDateString('en-US', { weekday: 'long' }),
+            day: new Date(date).toLocaleDateString('hi-IN', { weekday: 'long' }),
             vikramSamvat: data['विक्रम सम्वतबृहस्पति सम्वत्सर'],
             hindiMonth: data['हिन्दी महिना'],
             tithi: data['तिथिनक्षत्र'],
