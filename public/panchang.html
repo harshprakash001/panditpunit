@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hindi Panchang</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>📜  हिंदी पंचांग</h1>
+      <div class="intro">
+        <img src="pandit-ji.jpg" alt="Pandit Ji" class="pandit-image">
+        <div class="intro-text">
+          <h2>आचार्य पंडित पुनीत त्रिपाठी जी द्वारा प्रमाणित पंचांग</h2>
+          <h3>Certified Panchang by Acharya Pandit Puneet Tripathi Ji</h3>
+        </div>
+      </div>
+    </header>
+
+    <form id="panchang-form" class="form">
+      <div class="form-group">
+        <label for="location">🔍 स्थान खोजें:</label>
+        <div class="input-wrapper">
+          <input type="text" id="location" name="location" placeholder="शहर का नाम दर्ज करें" required>
+          <button type="button" id="search-location" class="btn">खोजें</button>
+        </div>
+      </div>
+      <div id="location-results"></div>
+      
+      <div class="form-group">
+        <label for="date">📅 तारीख चुनें:</label>
+        <input type="date" id="date" name="date" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="language">🌐 भाषा:</label>
+        <select id="language" name="language" class="select">
+          <option value="hi">हिंदी</option>
+          <option value="en">English</option>
+        </select>
+      </div>
+      
+      <input type="hidden" id="geonameId" name="geonameId">
+      <input type="hidden" id="timezone" name="timezone">
+      <button type="submit" class="btn submit-btn">पंचांग प्राप्त करें</button>
+    </form>
+
+    <div id="panchang-output" class="output"></div>
+  </div>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/9838687923" target="_blank" class="whatsapp-float">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-icon">
+  </a>
+
+  <script src="js/script.js"></script>
+
+</body>
+</html>
