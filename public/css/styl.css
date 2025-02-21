@@ -1,0 +1,141 @@
+/* General Styles */
+body {
+    font-family: 'Hind Siliguri', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #FFD700, #FF8C00);
+    text-align: center;
+    color: #4B0082;
+}
+
+/* Container */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    max-width: 90%;
+    margin: auto;
+}
+
+/* Image Circle */
+.image-circle {
+    width: 40vw; /* Responsive width */
+    max-width: 150px;
+    height: auto;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid white;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+    animation: pulse 2s infinite;
+}
+
+.image-circle img {
+    width: 100%;
+    height: auto;
+}
+
+/* Title */
+.title {
+    font-family: 'Kalam', cursive;
+    font-size: 2rem;
+    margin-top: 15px;
+    font-weight: bold;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Buttons */
+.button-container {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn {
+    display: block;
+    width: 80%; /* Makes it fit smaller screens */
+    max-width: 250px;
+    padding: 12px;
+    margin: 10px auto;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: white;
+    background: #4B0082;
+    text-decoration: none;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.3s ease-in-out;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btn:hover {
+    background: #800080;
+    transform: scale(1.05);
+}
+
+/* WhatsApp Floating Button */
+.whatsapp-float {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    background-color: #25d366;
+    border-radius: 50%;
+    padding: 12px;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    background-color: #128C7E;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.whatsapp-icon {
+    width: 30px;
+    height: 30px;
+    display: block;
+    object-fit: contain;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .btn {
+        font-size: 1.2rem;
+        padding: 10px;
+    }
+
+    .whatsapp-icon {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 1.6rem;
+    }
+
+    .btn {
+        font-size: 1.1rem;
+        width: 90%;
+    }
+
+    .whatsapp-icon {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+/* Animation for Image */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
